@@ -4,6 +4,7 @@ const path = require("path");
 
 (async function githubLogin() {
   let driver = await new Builder().forBrowser("safari").build();
+  await driver.manage().window().maximize();
 
   const screenshotsDir = path.join(__dirname, "screenshots");
   if (!fs.existsSync(screenshotsDir)) {
@@ -26,44 +27,47 @@ const path = require("path");
     await driver.wait(until.urlContains("github.com"), 5000);
     await saveScreenshot(driver, "prueba_validacion_credenciales_login");
 
- // ================================================
-    // Validando que las credenciales sean correctas
-    await driver.findElement(By.id("login_field")).sendKeys("seleniumprueba33@gmail.com");
-    await driver.findElement(By.id("password")).sendKeys("Sln@@!s21");
-    await driver.findElement(By.name("commit")).click();
-    await driver.wait(until.urlContains("github.com"), 10000);
-    await driver.sleep(5000); 
-    const isSecurityPage = await validateSecurityPage(driver);
-    if (isSecurityPage) {
-      console.log("Validación exitosa: se redirigió a la página de código de seguridad.");
-      await saveScreenshot(driver, "pagina_codigo_seguridad");
-    } else {
-      console.error("No se redirigió a la página de código de seguridad.");
-    }
-    console.log(
-      "Credenciales correctas de el login."
-    );
+    // =================================================
+    // Validando que github.com carga correctamente
 
-    // ============================================
-    // Validando las cookies
+    await driver.get("https://github.com");
+    await driver.sleep(5000)
+    await saveScreenshot(driver, "pagina_principal");
 
-    await driver.get("https://github.com/login");
-    const manageCookiesLink = await driver.wait(
-      until.elementLocated(By.linkText("Manage cookies")),
+
+    // =================================================
+    // Se navega a la infromacion de precios en github
+    
+    const pricingLink = await driver.wait(
+      until.elementLocated(By.linkText("Pricing")),
       5000
     );
-    await manageCookiesLink.click();
+    await pricingLink.click();
+    await driver.wait(until.titleContains("Pricing"), 2000);
+    await driver.sleep(5000)
+    await saveScreenshot(driver, "pagina_precios");
+    console.log("Página de Pricing cargada con éxito.");
 
-    await driver.wait(until.elementLocated(By.css("div[role='dialog']")), 5000);
-    const acceptButtons = await driver.findElements(By.xpath("//input[@value='accept']"));
-    for (const button of acceptButtons) {
-      await button.click();
-    }
-    await saveScreenshot(driver, "Cookies_aceptadas");
-    const saveChangesButton = await driver.findElement(By.xpath("//button[contains(text(), 'Save changes')]"));
-    await saveChangesButton.click();
+    // =================================================
+    // Se clickea a la informacion de precios 
+    
+    const unirmegRATIS = await driver.wait(
+      until.elementLocated(By.linkText("Join for free")),
+      5000
+    );
+    await unirmegRATIS.click();
+    await driver.sleep(5000)
+    await saveScreenshot(driver, "pagina_unirme_gratis");
+    console.log("Página de pagina_unirme_gratis cargada con éxito.");
 
-    console.log("Cookies aceptadas y cambios guardados exitosamente.");
+
+    // =================================================
+    // Digitamos un correo que ya existe 
+    await driver.findElement(By.id("email")).sendKeys("johnkerlin52@gmail.com");
+    await driver.sleep(2000)
+    await saveScreenshot(driver, "correo_existente_unirme");
+
+
   } catch (error) {
     console.error("Error durante el login:", error);
 
@@ -78,13 +82,5 @@ const path = require("path");
     fs.writeFileSync(filePath, screenshot, "base64");
     console.log(`Captura guardada en: ${filePath}`);
   }
-  async function validateSecurityPage(driver) {
-    try {
-      // Esperar hasta 10 segundos para que un elemento específico de la página cargue
-      await driver.wait(until.elementLocated(By.id("otp")), 3000); // ID del campo de código de seguridad
-      return true; // Página de seguridad detectada
-    } catch (error) {
-      return false; // Página de seguridad no detectada
-    }
-  }
+ 
 })();
