@@ -9,7 +9,7 @@ Para ejecutar las pruebas automatizadas, asegúrate de tener **Node.js** instala
 
 1. Clona este repositorio:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/JohnDev-01/PruebasAutomatizada-Selenium.git
    ```
 
 2. Instala las dependencias necesarias:
@@ -53,10 +53,7 @@ Las historias de usuario relacionadas con estas pruebas se encuentran documentad
 
 ## 🎥 Video de Referencia
 
-Para entender mejor cómo funcionan estas pruebas automatizadas, puedes revisar el siguiente video en YouTube:
-
-**Cómo implementar pruebas automatizadas con Selenium en Node.js**
-https://youtu.be/D1vx5M729YA
+Para entender mejor cómo funcionan estas pruebas automatizadas, puedes revisar el siguiente video en YouTube [Pruebas Automatizadas: Selenium y JavaScript en 10 Minutos 🚀](https://youtu.be/D1vx5M729YA).
 
 ## 📦 Requerimientos
 
