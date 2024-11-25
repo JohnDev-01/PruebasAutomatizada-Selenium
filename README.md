@@ -1,5 +1,5 @@
 
-# Pruebas Automatizadas para GitHub
+# Pruebas Automatizadas para GitHub.com
 
 Este proyecto contiene un script en Node.js que ejecuta pruebas automatizadas hacia la página web de **[GitHub](https://github.com)**. Utilizamos **Selenium WebDriver** para realizar las pruebas de validación y navegación en distintas secciones del sitio web.
 
