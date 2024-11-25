@@ -49,15 +49,14 @@ Las pruebas automatizadas incluidas en este script son las siguientes:
 
 ## 📂 Historias de Usuario
 
-Las historias de usuario relacionadas con estas pruebas se encuentran documentadas dentro de este repositorio en el archivo `HISTORIAS_DE_USUARIO.md`. También están disponibles en el board de GitHub asociado a este proyecto, donde se realiza el seguimiento del estado de cada historia.
+Las historias de usuario relacionadas con estas pruebas se encuentran documentadas dentro de este repositorio en el archivo `Historias_de_usuario.pdf`. También están disponibles en el board de GitHub asociado a este proyecto, donde se realiza el seguimiento del estado de cada historia.
 
 ## 🎥 Video de Referencia
 
 Para entender mejor cómo funcionan estas pruebas automatizadas, puedes revisar el siguiente video en YouTube:
 
 **Cómo implementar pruebas automatizadas con Selenium en Node.js**
-
-*Nota: El enlace es una referencia genérica. Si tienes un video específico que quieras incluir, asegúrate de actualizar el enlace con la URL correspondiente.*
+https://youtu.be/D1vx5M729YA
 
 ## 📦 Requerimientos
 
